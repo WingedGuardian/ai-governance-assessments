@@ -1,0 +1,119 @@
+\documentclass[11pt,a4paper]{article}
+
+% Margins
+\usepackage[margin=1in]{geometry}
+
+% Fonts — Liberation family (full Unicode, Times/Helvetica/Courier metric-compatible)
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+
+% Colors
+\usepackage{xcolor}
+\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{medgray}{RGB}{100,100,100}
+\definecolor{lightgray}{RGB}{220,220,220}
+
+% Links
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=darkblue,
+  urlcolor=darkblue,
+  citecolor=darkblue
+}
+
+% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{medgray}{$short-title$}}
+\fancyhead[R]{\small\textcolor{medgray}{v$version$}}
+\fancyfoot[C]{\small\textcolor{medgray}{Page \thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{darkblue}}{}{0em}{}[\vspace{-0.5em}\textcolor{lightgray}{\rule{\textwidth}{0.5pt}}]
+\titleformat{\subsection}{\large\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0em}{}
+
+% Table formatting
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+
+% Lists
+\usepackage{enumitem}
+\setlist[itemize]{nosep,left=0pt}
+\setlist[enumerate]{nosep,left=0pt}
+
+% Tight list support for pandoc
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% Code blocks
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{lightgray},
+  backgroundcolor=\color{white}
+}
+
+% Graphics
+\usepackage{graphicx}
+
+% Title page
+\newcommand{\maketitlepage}{
+  \begin{titlepage}
+    \vspace*{3cm}
+    {\Huge\bfseries\color{darkblue} $title$\par}
+    \vspace{1cm}
+    {\Large\color{medgray} $subtitle$\par}
+    \vspace{2cm}
+    \textcolor{lightgray}{\rule{\textwidth}{1pt}}
+    \vspace{1cm}
+
+    \begin{tabular}{@{}ll}
+      \textbf{Version} & $version$ \\
+      \textbf{Date} & $date$ \\
+      \textbf{Author} & $author$ \\
+      \textbf{Subject System} & $subject$ \\
+      \textbf{Classification} & $classification$ \\
+    \end{tabular}
+
+    \vfill
+
+    {\small\color{medgray}
+    \textbf{Document History}\\[4pt]
+    \begin{tabular}{@{}llp{7cm}}
+      \toprule
+      \textbf{Version / Date} & \textbf{Author} & \textbf{Description} \\
+      \midrule
+      $version$ \enspace ($date$) & $author$ & Initial release \\
+      \bottomrule
+    \end{tabular}
+    }
+  \end{titlepage}
+}
+
+\begin{document}
+
+\maketitlepage
+
+\tableofcontents
+\newpage
+
+$body$
+
+\end{document}
