@@ -18,7 +18,7 @@ This document describes the system's architecture, decision-making model, stakeh
 
 ### 2.1 Operational Context
 
-Genesis runs as a containerized Linux application (Ubuntu 24.04) on cloud infrastructure. The runtime is approximately 94,000 lines of Python across 64 packages, backed by a SQLite database with write-ahead logging and a Qdrant vector database for semantic search. The system integrates with multiple external LLM providers for inference, primarily Anthropic Claude, with secondary routing to DeepInfra, Groq, and Mistral. A local Ollama instance handles embedding generation and lightweight classification tasks.
+Genesis runs as a containerized Linux application (Ubuntu 24.04) on cloud infrastructure. The runtime is a modular Python application, backed by a SQLite database with write-ahead logging and a Qdrant vector database for semantic search. The system integrates with multiple external LLM providers for inference, primarily Anthropic Claude, with secondary routing to DeepInfra, Groq, and Mistral. A local Ollama instance handles embedding generation and lightweight classification tasks.
 
 The system is single-tenant by design. One user, one instance, no shared state between deployments. Each deployment is operationally independent.
 
